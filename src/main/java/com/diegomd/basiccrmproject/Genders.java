@@ -1,2 +1,6 @@
-package com.diegomd.basiccrmproject;public enum Genders {
+package com.diegomd.basiccrmproject;
+
+public enum Genders {
+    MASCULINE,
+    FEMININE;
 }
