@@ -6,7 +6,7 @@ public class Client {
     private UUID id;
     private String firstName;
     private String middleName;
-    private String surname;
+    private String lastName;
     private long cpf;
     private long phoneNumber;
     private int age;
@@ -14,12 +14,12 @@ public class Client {
     private String address;
     private Genders gender;
 
-    public Client(String firstName, String middleName, String surname, long cpf,
+    public Client(String firstName, String middleName, String lastName, long cpf,
                   long phoneNumber, int age, String dateOfBirth, String address, Genders gender) {
         id = UUID.randomUUID();
         setFirstName(firstName);
         setMiddleName(middleName);
-        setSurname(surname);
+        setLastName(lastName);
         setCpf(cpf);
         setPhoneNumber(phoneNumber);
         setAge(age);
@@ -47,12 +47,12 @@ public class Client {
         this.middleName = middleName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public long getCpf() {
@@ -109,7 +109,7 @@ public class Client {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
-                ", surname='" + surname + '\'' +
+                ", surname='" + lastName + '\'' +
                 ", cpf=" + cpf +
                 ", phoneNumber=" + phoneNumber +
                 ", age=" + age +
