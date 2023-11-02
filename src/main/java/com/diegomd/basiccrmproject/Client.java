@@ -1,12 +1,16 @@
 package com.diegomd.basiccrmproject;
 
+import lombok.Getter;
+
 import java.util.UUID;
 
+@Getter
 public class Client {
-    private UUID id;
+    private final UUID id;
     private String firstName;
     private String middleName;
     private String lastName;
+    private final String fullName;
     private long cpf;
     private long phoneNumber;
     private int age;
@@ -20,6 +24,7 @@ public class Client {
         setFirstName(firstName);
         setMiddleName(middleName);
         setLastName(lastName);
+        fullName = this.firstName + this.middleName + this.lastName;
         setCpf(cpf);
         setPhoneNumber(phoneNumber);
         setAge(age);
@@ -27,76 +32,37 @@ public class Client {
         setAddress(address);
         setGender(gender);
     }
-    public UUID getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
     }
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public long getCpf() {
-        return cpf;
     }
 
     public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Genders getGender() {
-        return gender;
     }
 
     public void setGender(Genders gender) {
