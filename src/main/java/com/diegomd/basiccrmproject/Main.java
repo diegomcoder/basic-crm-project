@@ -8,6 +8,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
+		Client firstClient = new Client("David", "Osborne", "Junior",
+				12345678910L, "davidosborne@some.com", 62_233_4567L,
+				"13/08/1987", "States avn 127st", Genders.MASCULINE);
+
+		System.out.printf(firstClient.toString());
 
 //		Client stClient = new Client("John", "Vonn", "Newmann", 12345678910L,
 //				22_4525_3232L, 32, "23/09/1947", "Street 4, nt avenue",Genders.MASCULINE);
