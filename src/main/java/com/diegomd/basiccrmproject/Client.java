@@ -20,10 +20,10 @@ public class Client {
     private int age;
     private Genders gender;
     private String address;
-    private long phoneNumber;
+    private String phoneNumber;
 
     public Client(String firstName, String middleName, String lastName, long cpf, String email,
-                  long phoneNumber, String dateOfBirth, String address, Genders gender) {
+                  String phoneNumber, String dateOfBirth, String address, Genders gender) {
         id = UUID.randomUUID();
         setFirstName(firstName);
         setMiddleName(middleName);
@@ -58,7 +58,7 @@ public class Client {
 
     public void setEmail(String email) { this.email = email; }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

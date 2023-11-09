@@ -20,7 +20,7 @@ public class ClientBuilder {
     private int age;
     private Genders gender;
     private String address;
-    private long phoneNumber;
+    private String phoneNumber;
 
     public ClientBuilder withIdentification(String firstName, String middleName, String lastName, long cpf, String dateOfBirth, Genders gender) {
         id = UUID.randomUUID();
@@ -35,7 +35,7 @@ public class ClientBuilder {
         return this;
     }
 
-    public ClientBuilder withContactInfo(String email, String address, long phoneNumber) {
+    public ClientBuilder withContactInfo(String email, String address, String phoneNumber) {
         setEmail(email);
         setAddress(address);
         setPhoneNumber(phoneNumber);
@@ -62,7 +62,7 @@ public class ClientBuilder {
 
     public void setEmail(String email) { this.email = email; }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -93,12 +93,32 @@ public class ClientBuilder {
                 "\n\tmiddleName = '" + middleName + '\'' +
                 "\n\tsurname = '" + lastName + '\'' +
                 "\n\tcpf = " + cpf +
-                "\n\temail = " + email +
-                "\n\tphoneNumber = " + phoneNumber +
                 "\n\tage = " + age +
                 "\n\tdateOfBirth = '" + dateOfBirth + '\'' +
-                "\n\taddress = '" + address + '\'' +
                 "\n\tgender = " + gender +
+                "\n\taddress = '" + address + '\'' +
+                "\n\tphoneNumber = " + phoneNumber +
+                "\n\temail = " + email +
+                "\n}";
+    }
+
+    public String toStringPersonalData() {
+        return "\nClient {" +
+                "\n\tid = " + id +
+                "\n\tfullName = " + fullName +
+                "\n\tcpf = " + cpf +
+                "\n\tage = " + age +
+                "\n\tdateOfBirth = '" + dateOfBirth + '\'' +
+                "\n\tgender = " + gender +
+                "\n}";
+    }
+
+    public String toStringContactInfo() {
+        return "\nClient {" +
+                "\n\tid = " + id +
+                "\n\taddress = '" + address + '\'' +
+                "\n\tphoneNumber = " + phoneNumber +
+                "\n\temail = " + email +
                 "\n}";
     }
 }

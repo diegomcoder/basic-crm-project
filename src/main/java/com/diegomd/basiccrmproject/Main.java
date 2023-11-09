@@ -10,21 +10,24 @@ public class Main {
 		SpringApplication.run(Main.class, args);
 
 		Client firstClient = new Client("David", "Osborne", "Junior",
-				12345678910L, "davidosborne@some.com", 62_233_4567L,
+				12345678910L, "davidosborne@some.com", "(62) 233 4567",
 				"13/08/1987", "States avn 127st", Genders.MASCULINE);
-		System.out.printf(firstClient.toString());
 
 		ClientBuilder clientWithIdentification = new ClientBuilder().withIdentification(
 				"David","Osborne","Junior", 12345678910L,
 				"13/08/1987",Genders.MASCULINE);
 
-//		Client stClient = new Client("John", "Vonn", "Newmann", 12345678910L,
-//				22_4525_3232L, 32, "23/09/1947", "Street 4, nt avenue",Genders.MASCULINE);
-//
-//		System.out.println(stClient);
-		/*
-		Se eu não me engano, existe um método isEmpty para objetos String
-		* */
+		ClientBuilder client2 = new ClientBuilder().withContactInfo("davidosborne@some.com",
+				"States avn 127st", "(62) 233 4567");
+
+		ClientBuilder client3 = new ClientBuilder().withIdentification("David", "Osborne", "Junior",
+				12345678910L, "13/08/1987", Genders.MASCULINE);
+
+		System.out.printf(firstClient.toString());
+		System.out.println(clientWithIdentification);
+		System.out.println(client2.toStringContactInfo());
+		System.out.println(client3.toStringPersonalData());
+
 	}
 
 }
