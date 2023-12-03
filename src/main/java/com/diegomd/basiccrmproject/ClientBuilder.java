@@ -1,36 +1,32 @@
 package com.diegomd.basiccrmproject;
 
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
 @Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClientBuilder {
-    private UUID id;
     private String firstName;
     private String middleName;
     private String lastName;
-    private String fullName;
-    private long cpf;
+    private String cpf;
     private String email;
     private String dateOfBirth;
-    private int age;
     private Genders gender;
     private String address;
     private String phoneNumber;
 
-    public ClientBuilder withIdentification(String firstName, String middleName, String lastName, long cpf, String dateOfBirth, Genders gender) {
-        id = UUID.randomUUID();
+    public ClientBuilder withIdentification(String firstName, String middleName, String lastName, String cpf, String dateOfBirth, Genders gender) {
         setFirstName(firstName);
         setMiddleName(middleName);
         setLastName(lastName);
-        setFullName();
         setCpf(cpf);
         setDateOfBirth(dateOfBirth);
-        setAge();
         setGender(gender);
         return this;
     }
@@ -42,22 +38,45 @@ public class ClientBuilder {
         return this;
     }
 
+    public String getFullName() {
+        if (firstName == null)
+            throw new IllegalArgumentException("First name can't be null");
+        String fullName = firstName;
+        if (middleName != null)
+            fullName += " " + middleName;
+        if (lastName != null)
+            fullName += " " + lastName;
+        return fullName;
+    }
+
     public void setFirstName(String firstName) {
+        if (firstName == null || firstName.isEmpty())
+            throw new IllegalArgumentException("First name can't be empty or null");
         this.firstName = firstName;
     }
 
     public void setMiddleName(String middleName) {
+        if (firstName == null || firstName.isEmpty())
+            throw new IllegalArgumentException("First name can't be empty or null");
         this.middleName = middleName;
     }
 
     public void setLastName(String lastName) {
+        if (firstName == null || firstName.isEmpty())
+            throw new IllegalArgumentException("First name can't be empty or null");
         this.lastName = lastName;
     }
 
-    private void setFullName() { this.fullName = this.firstName + " " + this.middleName + " " + this.lastName; }
-
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getGenderTreatment() {
+        if (gender == Genders.F)
+            return "Mrs.";
+        if (gender == Genders.M)
+            return "Mr.";
+        return "";
     }
 
     public void setEmail(String email) { this.email = email; }
@@ -66,10 +85,12 @@ public class ClientBuilder {
         this.phoneNumber = phoneNumber;
     }
 
-    private void setAge() {
+    public int getAge() {
+        if (this.dateOfBirth == null)
+            throw new IllegalArgumentException("Date of birth can't be null.");
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dateOfBirth = LocalDate.parse(this.dateOfBirth, dateFormat);
-        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     public void setDateOfBirth(String dateOfBirth) {
@@ -84,30 +105,13 @@ public class ClientBuilder {
         this.gender = gender;
     }
 
-    @Override
-    public String toString() {
-        return "\nClient {" +
-                "\n\tid = " + id +
-                "\n\tfullName = " + fullName +
-                "\n\tfirstName = '" + firstName + '\'' +
-                "\n\tmiddleName = '" + middleName + '\'' +
-                "\n\tsurname = '" + lastName + '\'' +
-                "\n\tcpf = " + cpf +
-                "\n\tage = " + age +
-                "\n\tdateOfBirth = '" + dateOfBirth + '\'' +
-                "\n\tgender = " + gender +
-                "\n\taddress = '" + address + '\'' +
-                "\n\tphoneNumber = " + phoneNumber +
-                "\n\temail = " + email +
-                "\n}";
-    }
-
     public String toStringPersonalData() {
         return "\nClient {" +
-                "\n\tid = " + id +
-                "\n\tfullName = " + fullName +
+                "\n\tfirstName = " + firstName +
+                "\n\tmiddleName = " + middleName +
+                "\n\tlastName = " + lastName +
                 "\n\tcpf = " + cpf +
-                "\n\tage = " + age +
+                "\n\tage = " + getAge() +
                 "\n\tdateOfBirth = '" + dateOfBirth + '\'' +
                 "\n\tgender = " + gender +
                 "\n}";
@@ -115,7 +119,6 @@ public class ClientBuilder {
 
     public String toStringContactInfo() {
         return "\nClient {" +
-                "\n\tid = " + id +
                 "\n\taddress = '" + address + '\'' +
                 "\n\tphoneNumber = " + phoneNumber +
                 "\n\temail = " + email +

@@ -50,7 +50,7 @@ public class Client {
         this.lastName = lastName;
     }
 
-    private void setFullName() { this.fullName = this.firstName + " " + this.middleName + " " + this.lastName; }
+    private void setFullName() { this.fullName = String.format("%s %s %s", firstName, middleName, lastName); }
 
     public void setCpf(long cpf) {
         this.cpf = cpf;
