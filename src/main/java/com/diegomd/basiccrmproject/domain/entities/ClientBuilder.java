@@ -1,5 +1,6 @@
-package com.diegomd.basiccrmproject;
+package com.diegomd.basiccrmproject.domain.entities;
 
+import com.diegomd.basiccrmproject.shared.enums.Genders;
 import lombok.*;
 
 import java.time.LocalDate;

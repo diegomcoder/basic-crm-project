@@ -1,6 +1,7 @@
 package com.diegomd.basiccrmproject;
 
-import junit.framework.TestCase;
+import com.diegomd.basiccrmproject.domain.entities.ClientBuilder;
+import com.diegomd.basiccrmproject.shared.enums.Genders;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
